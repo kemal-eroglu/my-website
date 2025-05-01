@@ -742,22 +742,7 @@
             updateFormPlaceholders(lang);
         }
         
-        // Form placeholder'larını güncelle
-        function updateFormPlaceholders(lang) {
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            
-            if(lang === 'tr') {
-                nameInput.placeholder = 'Adınız';
-                emailInput.placeholder = 'E-posta';
-                messageInput.placeholder = 'Mesajınız';
-            } else {
-                nameInput.placeholder = 'Your Name';
-                emailInput.placeholder = 'Email';
-                messageInput.placeholder = 'Your Message';
-            }
-        }
+
         
         // Dil butonlarına event listener ekle
         document.querySelectorAll('.language-btn').forEach(btn => {
@@ -784,18 +769,8 @@
             changeLanguage('tr');
         });
         
-        // Form gönderimi
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const activeLang = document.querySelector('.language-btn.active').dataset.lang;
-            const successMessage = activeLang === 'tr' 
-                ? 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.' 
-                : 'Your message has been sent successfully! I will get back to you as soon as possible.';
-            
-            alert(successMessage);
-            this.reset();
-        });
+    
+      
         
         // Scroll animasyonları
         function animateOnScroll() {
