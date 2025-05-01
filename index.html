@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio | Yazılımcı Portfolyosu</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --dark-text: #2c3e50;
+        }
+
+        body {
+            font-family:"Plus Jakarta Sans", sans-serif;
+            font-weight: 700;
+            font-optical-sizing: auto;
+            font-size: large;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            transition: all 0.5s ease;
+            
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 2rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem;
+            border-radius: 30px;
+        }
+
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .language-btn:hover, .language-btn.active {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 0 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+         
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            
+
+  
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: rgba(var(--primary-color), 0.2);
+        } 
+
+ 
+
+
+
+
+
+        .skill-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+      
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: rgba(var(--primary-color), 0.2);
+        }
+
+        .project-img {
+            height: 220px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin: 1.5rem 0;
+        }
+
+        .tag {
+            background-color: var(--light-bg);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            font-weight: 500;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* Toggle Menu Animation */
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .toggle .line2 {
+            opacity: 0;
+        }
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                right: 0;
+                top: 80px;
+                background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                clip-path: circle(0px at 90% -10%);
+                -webkit-clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+                z-index: 1000;
+            }
+            
+            .nav-links.open {
+                clip-path: circle(1000px at 90% -10%);
+                -webkit-clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            
+            .nav-links a {
+                padding: 1rem;
+                width: 80%;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            .language-switcher {
+                margin: 1rem auto 0;
+                width: fit-content;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Hamburger Menu */
+            
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                top: 70px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-code"></i></span>
+                    <span class="tr">KEMAL EROĞLU</span>
+                    <span class="en hidden">KEMAL EROĞLU</span>
+                </div>
+                
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#skills" class="tr">Yetenekler</a>
+                    <a href="#skills" class="en hidden">Skills</a>
+                    <a href="#projects" class="tr">Projeler</a>
+                    <a href="#projects" class="en hidden">Projects</a>
+                    <a href="#about" class="tr">Hakkımda</a>
+                    <a href="#about" class="en hidden">About</a>
+                    <a href="#contact" class="tr">İletişim</a>
+                    <a href="#contact" class="en hidden">Contact</a>
+                    <div class="language-switcher">
+                        <button class="language-btn active" data-lang="tr">TR</button>
+                        <button class="language-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="container">
+            <h1 class="tr animate">Merhaba, Ben <span class="highlight">Yazılım Geliştirici</span>yim</h1>
+            <h1 class="en hidden animate">Hello, I'm a <span class="highlight">Software Developer</span></h1>
+            <p class="tr animate delay-1">HTML, CSS, JavaScript, PostgreSQL ve Java ile modern web uygulamaları geliştiriyorum.</p>
+            <p class="en hidden animate delay-1">I develop modern web applications with HTML, CSS, JavaScript, PostgreSQL and Java.</p>
+            <div class="animate delay-2">
+                <a href="#contact" class="btn tr">İletişime Geç</a>
+                <a href="#contact" class="btn en hidden">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title tr animate">Yeteneklerim</h2>
+            <h2 class="section-title en hidden animate">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card animate delay-1">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <h3>HTML & CSS</h3>
+                    <p class="tr">Modern, duyarlı ve erişilebilir web arayüzleri oluşturma konusunda uzmanım.</p>
+                    <p class="en hidden">Expert in creating modern, responsive and accessible web interfaces.</p>
+                </div>
+                <div class="skill-card animate delay-2">
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
+                    <h3>JavaScript</h3>
+                    <p class="tr">Etkileşimli ve dinamik web uygulamaları geliştiriyorum.</p>
+                    <p class="en hidden">I develop interactive and dynamic web applications.</p>
+                </div>
+                <div class="skill-card animate delay-1">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>PostgreSQL</h3>
+                    <p class="tr">Veritabanı tasarımı, optimizasyonu ve karmaşık sorgular yazma.</p>
+                    <p class="en hidden">Database design, optimization and writing complex queries.</p>
+                </div>
+                <div class="skill-card animate delay-2">
+                    <div class="skill-icon"><i class="fab fa-java"></i></div>
+                    <h3>Java</h3>
+                    <p class="tr">Nesne yönelimli programlama ve kurumsal uygulama geliştirme.</p>
+                    <p class="en hidden">Object-oriented programming and enterprise application development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title tr animate">Projelerim</h2>
+            <h2 class="section-title en hidden animate">My Projects</h2>
+            <div class="projects-container">
+                <div class="project-card animate delay-1">
+                    <div class="project-img tr">E-Ticaret Platformu</div>
+                    <div class="project-img en hidden">E-Commerce Platform</div>
+                    <div class="project-info">
+                        <h3 class="tr">E-Ticaret Platformu</h3>
+                        <h3 class="en hidden">E-Commerce Platform</h3>
+                        <p class="tr">Tam özellikli bir e-ticaret platformu with kullanıcı yönetimi, ödeme entegrasyonu ve ürün yönetimi.</p>
+                        <p class="en hidden">Full-featured e-commerce platform with user management, payment integration and product management.</p>
+                        <div class="project-tags">
+                            <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tag"><i class="fab fa-java"></i> Java</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn tr">Detayları Gör</a>
+                            <a href="#" class="btn en hidden">View Details</a>
+                            <a href="#" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card animate delay-2">
+                    <div class="project-img tr">Veri Analiz Paneli</div>
+                    <div class="project-img en hidden">Data Analytics Dashboard</div>
+                    <div class="project-info">
+                        <h3 class="tr">Veri Analiz Paneli</h3>
+                        <h3 class="en hidden">Data Analytics Dashboard</h3>
+                        <p class="tr">Büyük veri kümelerini görselleştiren ve analiz eden bir yönetim paneli.</p>
+                        <p class="en hidden">A management panel that visualizes and analyzes large datasets.</p>
+                        <div class="project-tags">
+                            <span class="tag"><i class="fab fa-java"></i> Java</span>
+                            <span class="tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn tr">Detayları Gör</a>
+                            <a href="#" class="btn en hidden">View Details</a>
+                            <a href="#" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card animate delay-1">
+                    <div class="project-img tr">Kişisel Blog</div>
+                    <div class="project-img en hidden">Personal Blog</div>
+                    <div class="project-info">
+                        <h3 class="tr">Kişisel Blog Sistemi</h3>
+                        <h3 class="en hidden">Personal Blog System</h3>
+                        <p class="tr">Markdown destekli, hızlı ve modern bir blog sistemi.</p>
+                        <p class="en hidden">Markdown supported, fast and modern blog system.</p>
+                        <div class="project-tags">
+                            <span class="tag"><i class="fab fa-html5"></i> HTML/CSS</span>
+                            <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tag"><i class="fab fa-java"></i> Java</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn tr">Detayları Gör</a>
+                            <a href="#" class="btn en hidden">View Details</a>
+                            <a href="#" class="btn-outline"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title tr animate">Hakkımda</h2>
+            <h2 class="section-title en hidden animate">About Me</h2>
+            <div class="about-content animate delay-1" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="about-text">
+                    <p class="tr">Yazılım geliştirme tutkusu olan bir profesyonelim. Hem frontend hem backend teknolojilerinde deneyim sahibiyim. Temiz kod yazmaya, test odaklı geliştirmeye ve sürekli öğrenmeye önem veriyorum.</p>
+                    <p class="tr">PostgreSQL ile veritabanı yönetimi, Java ile kurumsal uygulama geliştirme ve modern JavaScript framework'leri ile kullanıcı dostu arayüzler oluşturma konularında uzmanlığım var.</p>
+                    
+                    <p class="en hidden">I'm a professional with a passion for software development. I have experience in both frontend and backend technologies. I value writing clean code, test-driven development and continuous learning.</p>
+                    <p class="en hidden">I have expertise in database management with PostgreSQL, enterprise application development with Java, and creating user-friendly interfaces with modern JavaScript frameworks.</p>
+                </div>
+                <div class="about-skills animate delay-2" style="margin-top: 3rem;">
+                    <h3 class="tr">Teknoloji Yığınım</h3>
+                    <h3 class="en hidden">My Tech Stack</h3>
+                    <div class="skills-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+                        <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</span>
+                        <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title tr animate">İletişim</h2>
+            <h2 class="section-title en hidden animate">Contact</h2>
+            <div class="contact-container animate delay-1" style="max-width: 600px; margin: 0 auto;">
+                <div class="contact-info" style="text-align: center; margin-bottom: 3rem;">
+                    <p class="tr">Yeni projeler, işbirlikleri veya sorularınız için bana ulaşabilirsiniz.</p>
+                    <p class="en hidden">You can contact me for new projects, collaborations or questions.</p>
+                </div>
+                <form id="contactForm" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" class="tr">Adınız</label>
+                        <label for="name" class="en hidden">Your Name</label>
+                        <input type="text" id="name" class="form-control tr" placeholder="Adınız" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" class="tr">E-posta</label>
+                        <label for="email" class="en hidden">Email</label>
+                        <input type="email" id="email" class="form-control tr" placeholder="E-posta" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" class="tr">Mesajınız</label>
+                        <label for="message" class="en hidden">Your Message</label>
+                        <textarea id="message" rows="5" class="form-control tr" placeholder="Mesajınız" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem;"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                        <span class="tr">Gönder</span>
+                        <span class="en hidden">Send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon"><i class="fas fa-code"></i></span>
+                    <span class="tr">KEMAL EROĞLU</span>
+                    <span class="en hidden">KEMAL EROĞLU</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/kemal-eroglu" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/kemal-ero%C4%9Flu-864490114/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="copyright tr">
+                    © 2025 Tüm Hakları Saklıdır | Yazılım Geliştirici Portfolyosu
+                </div>
+                <div class="copyright en hidden">
+                    © 2023 All Rights Reserved | Software Developer Portfolio
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('toggle');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // Dil değiştirme fonksiyonu
+        function changeLanguage(lang) {
+            // Tüm dil elementlerini gizle
+            document.querySelectorAll('.tr, .en').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Seçilen dilin elementlerini göster
+            document.querySelectorAll(`.${lang}`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            
+            // Dil butonlarını güncelle
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Sayfa başlığını güncelle
+            document.title = lang === 'tr' 
+                ? 'Yazılımcı Portfolyosu | HTML, CSS, JavaScript, PostgreSQL, Java' 
+                : 'Developer Portfolio | HTML, CSS, JavaScript, PostgreSQL, Java';
+            
+            // Form placeholder'larını güncelle
+            updateFormPlaceholders(lang);
+        }
+        
+        // Form placeholder'larını güncelle
+        function updateFormPlaceholders(lang) {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            
+            if(lang === 'tr') {
+                nameInput.placeholder = 'Adınız';
+                emailInput.placeholder = 'E-posta';
+                messageInput.placeholder = 'Mesajınız';
+            } else {
+                nameInput.placeholder = 'Your Name';
+                emailInput.placeholder = 'Email';
+                messageInput.placeholder = 'Your Message';
+            }
+        }
+        
+        // Dil butonlarına event listener ekle
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                changeLanguage(this.dataset.lang);
+            });
+        });
+        
+        // Sayfa yüklendiğinde animasyonları tetikle
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+            
+            // Varsayılan dil TR
+            changeLanguage('tr');
+        });
+        
+        // Form gönderimi
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const activeLang = document.querySelector('.language-btn.active').dataset.lang;
+            const successMessage = activeLang === 'tr' 
+                ? 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.' 
+                : 'Your message has been sent successfully! I will get back to you as soon as possible.';
+            
+            alert(successMessage);
+            this.reset();
+        });
+        
+        // Scroll animasyonları
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(el => {
+                const elementPosition = el.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if(elementPosition < windowHeight - elementVisible) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Sayfa yüklendiğinde bir kere çalıştır
+        
+        // Renk temasını rastgele değiştirme
+        function generateRandomColor() {
+            return Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+        }
+        
+        function updateColors() {
+            const root = document.documentElement;
+            root.style.setProperty('--primary-color', `#${generateRandomColor()}`);
+            root.style.setProperty('--secondary-color', `#${generateRandomColor()}`);
+            root.style.setProperty('--accent-color', `#${generateRandomColor()}`);
+        }
+        
+        // Renk değiştirme butonu ekle (opsiyonel)
+        const colorChangeBtn = document.createElement('button');
+        colorChangeBtn.innerHTML = '<i class="fas fa-palette"></i>';
+        colorChangeBtn.style.position = 'fixed';
+        colorChangeBtn.style.bottom = '20px';
+        colorChangeBtn.style.right = '20px';
+        colorChangeBtn.style.width = '50px';
+        colorChangeBtn.style.height = '50px';
+        colorChangeBtn.style.borderRadius = '50%';
+        colorChangeBtn.style.background = 'var(--accent-color)';
+        colorChangeBtn.style.color = 'white';
+        colorChangeBtn.style.border = 'none';
+        colorChangeBtn.style.cursor = 'pointer';
+        colorChangeBtn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+        colorChangeBtn.style.zIndex = '1000';
+        colorChangeBtn.style.fontSize = '1.2rem';
+        colorChangeBtn.addEventListener('click', updateColors);
+        document.body.appendChild(colorChangeBtn);
+
+        // Form gönderimi
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Form verilerini topla
+    const formData = new FormData(this);
+    const activeLang = document.querySelector('.language-btn.active').dataset.lang;
+    
+    // FormSubmit'e gönder
+    fetch('https://formsubmit.co/ajax/kemal.eroglu91@outlook.com', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const successMessage = activeLang === 'tr' 
+            ? 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.' 
+            : 'Your message has been sent successfully! I will get back to you as soon as possible.';
+        
+        alert(successMessage);
+        this.reset();
+    })
+    .catch(error => {
+        const errorMessage = activeLang === 'tr' 
+            ? 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan email gönderin.' 
+            : 'An error occurred. Please try again later or send an email directly.';
+        
+        alert(errorMessage);
+        console.error('Error:', error);
+    });
+});
+
+    </script>
+</body>
+</html>
