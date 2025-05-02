@@ -646,7 +646,7 @@
                     <p class="tr">Yeni projeler, işbirlikleri veya sorularınız için bana ulaşabilirsiniz.</p>
                     <p class="en hidden">You can contact me for new projects, collaborations or questions.</p>
                 </div>
-             <form id="contactForm" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                <form id="contactForm" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <div class="form-group" style="margin-bottom: 1.5rem;">
                         <label for="name" class="tr">Adınız</label>
                         <label for="name" class="en hidden">Your Name</label>
@@ -689,15 +689,15 @@
                     © 2025 Tüm Hakları Saklıdır | Yazılım Geliştirici Portfolyosu
                 </div>
                 <div class="copyright en hidden">
-                    © 2025 All Rights Reserved | Software Developer Portfolio
+                    © 2023 All Rights Reserved | Software Developer Portfolio
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
+           // Hamburger Menu Toggle
+           const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
         
         hamburger.addEventListener('click', () => {
@@ -742,7 +742,22 @@
             updateFormPlaceholders(lang);
         }
         
-
+        // Form placeholder'larını güncelle
+        function updateFormPlaceholders(lang) {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            
+            if(lang === 'tr') {
+                nameInput.placeholder = 'Adınız';
+                emailInput.placeholder = 'E-posta';
+                messageInput.placeholder = 'Mesajınız';
+            } else {
+                nameInput.placeholder = 'Your Name';
+                emailInput.placeholder = 'Email';
+                messageInput.placeholder = 'Your Message';
+            }
+        }
         
         // Dil butonlarına event listener ekle
         document.querySelectorAll('.language-btn').forEach(btn => {
@@ -769,8 +784,18 @@
             changeLanguage('tr');
         });
         
-    
-      
+        // Form gönderimi
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const activeLang = document.querySelector('.language-btn.active').dataset.lang;
+            const successMessage = activeLang === 'tr' 
+                ? 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağım.' 
+                : 'Your message has been sent successfully! I will get back to you as soon as possible.';
+            
+            alert(successMessage);
+            this.reset();
+        });
         
         // Scroll animasyonları
         function animateOnScroll() {
