@@ -15,6 +15,94 @@
             --light-bg: #f9f9f9;
             --dark-text: #2c3e50;
         }
+        /* Yükleme Ekranı Stilleri */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.loader-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 30px;
+}
+
+.loader-line {
+  height: 20px;
+  width: 0;
+  background-color: var(--primary-color);
+  margin-bottom: 5px;
+  animation: expand 1.5s infinite ease-in-out;
+  opacity: 0.7;
+}
+
+.loader-line:nth-child(1) {
+  width: 100px;
+  animation-delay: 0.1s;
+}
+
+.loader-line:nth-child(2) {
+  width: 150px;
+  animation-delay: 0.2s;
+}
+
+.loader-line:nth-child(3) {
+  width: 80px;
+  animation-delay: 0.3s;
+}
+
+.loader-cursor {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  animation: blink 1s infinite;
+}
+
+.loader-text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5rem;
+  color: var(--dark-text);
+  margin-top: 1rem;
+}
+
+@keyframes expand {
+  0%, 100% {
+    opacity: 0.3;
+    width: 0;
+  }
+  50% {
+    opacity: 1;
+    width: 200px;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Yükleme bittiğinde kaybolma efekti */
+.loader-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
         body {
             font-family:"Plus Jakarta Sans", sans-serif;
@@ -349,6 +437,165 @@
             display: none !important;
         }
 
+
+        /*whatsapp*/
+        /* WhatsApp Widget Stilleri */
+.whatsapp-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transform: translateY(150%);
+  transition: all 0.3s ease;
+  display: none;
+  flex-direction: column;
+  height: 500px;
+  overflow: hidden;
+}
+
+.whatsapp-widget.active {
+  transform: translateY(0);
+  display: flex;
+}
+
+.whatsapp-header {
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.whatsapp-profile {
+  display: flex;
+  align-items: center;
+}
+
+.whatsapp-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.whatsapp-info h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.whatsapp-info p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.whatsapp-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.whatsapp-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+.whatsapp-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.whatsapp-receive {
+  align-self: flex-start;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 0 15px 15px 15px;
+  max-width: 80%;
+  position: relative;
+}
+
+.whatsapp-time {
+  font-size: 10px;
+  color: #999;
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.whatsapp-footer {
+  padding: 10px;
+  background: white;
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.whatsapp-input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  padding: 10px 15px;
+  outline: none;
+}
+
+.whatsapp-send {
+  background: #25D366;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* WhatsApp Açma Butonu */
+.whatsapp-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-toggle:hover {
+  background: #128C7E;
+  transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-widget {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  }
+}
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -460,6 +707,17 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<!-- Yükleme Ekranı -->
+<div class="loader-container">
+    <div class="loader-code">
+      <div class="loader-line"></div>
+      <div class="loader-line"></div>
+      <div class="loader-line"></div>
+      <div class="loader-cursor">_</div>
+    </div>
+    <div class="loader-text tr">Portfolyo yükleniyor...</div>
+    <div class="loader-text en hidden">Loading portfolio...</div>
+  </div>
 <body>
     <header>
         <div class="container">
@@ -671,6 +929,46 @@
         </div>
     </section>
 
+        <!-- WhatsApp Canlı Sohbet Widget'ı -->
+<div class="whatsapp-widget">
+    <div class="whatsapp-header">
+      <div class="whatsapp-profile">
+        <img src="1.jpg" alt="Profil Fotoğrafı">
+        <div class="whatsapp-info">
+          <h4 class="tr">Destek Ekibi</h4>
+          <h4 class="en hidden">Support Team</h4>
+          <p class="tr">Genellikle hemen yanıt verir</p>
+          <p class="en hidden">Usually replies instantly</p>
+        </div>
+      </div>
+      <button class="whatsapp-close">&times;</button>
+    </div>
+    
+    <div class="whatsapp-body">
+      <div class="whatsapp-messages">
+        <div class="whatsapp-receive">
+          <p class="tr">Merhaba! Size nasıl yardımcı olabilirim?</p>
+          <p class="en hidden">Hello! How can I help you?</p>
+          <span class="whatsapp-time">10:30</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="whatsapp-footer">
+      <input type="text" class="whatsapp-input tr" placeholder="Bir mesaj yazın...">
+      <input type="text" class="whatsapp-input en hidden" placeholder="Type a message...">
+      <button class="whatsapp-send">
+        <i class="fab fa-whatsapp"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- WhatsApp Açma Butonu -->
+  <div class="whatsapp-toggle">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -695,7 +993,38 @@
         </div>
     </footer>
 
+
     <script>
+
+        // Sayfa yüklendiğinde loading ekranını kaldır
+window.addEventListener('load', function() {
+  const loader = document.querySelector('.loader-container');
+  
+  // 0.5 saniye bekletip animasyonla kaldırıyoruz
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    
+    // Animasyon bittikten sonra DOM'dan kaldır
+    setTimeout(() => {
+      loader.remove();
+    }, 500);
+  }, 1500); // Minimum 1.5 saniye gösterilecek
+  
+  // Dil değişikliğinde loading metnini güncelle
+  function updateLoaderText(lang) {
+    document.querySelectorAll('.loader-text').forEach(text => {
+      text.classList.add('hidden');
+    });
+    document.querySelector(`.loader-text.${lang}`).classList.remove('hidden');
+  }
+  
+  // Orijinal dil değiştirme fonksiyonunu genişlet
+  const originalChangeLanguage = window.changeLanguage;
+  window.changeLanguage = function(lang) {
+    originalChangeLanguage(lang);
+    updateLoaderText(lang);
+  };
+});
            // Hamburger Menu Toggle
            const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -831,11 +1160,12 @@
         // Renk değiştirme butonu ekle (opsiyonel)
         const colorChangeBtn = document.createElement('button');
         colorChangeBtn.innerHTML = '<i class="fas fa-palette"></i>';
+        
         colorChangeBtn.style.position = 'fixed';
-        colorChangeBtn.style.bottom = '20px';
-        colorChangeBtn.style.right = '20px';
-        colorChangeBtn.style.width = '50px';
-        colorChangeBtn.style.height = '50px';
+        colorChangeBtn.style.bottom = '30px';
+        colorChangeBtn.style.left= '30px';
+        colorChangeBtn.style.width = '60px';
+        colorChangeBtn.style.height = '60px';
         colorChangeBtn.style.borderRadius = '50%';
         colorChangeBtn.style.background = 'var(--accent-color)';
         colorChangeBtn.style.color = 'white';
@@ -885,6 +1215,76 @@
         alert(errorMessage);
         console.error('Error:', error);
     });
+});
+
+// WhatsApp Widget Fonksiyonları
+document.addEventListener('DOMContentLoaded', function() {
+  const whatsappWidget = document.querySelector('.whatsapp-widget');
+  const whatsappToggle = document.querySelector('.whatsapp-toggle');
+  const whatsappClose = document.querySelector('.whatsapp-close');
+  const whatsappSend = document.querySelector('.whatsapp-send');
+  const whatsappInput = document.querySelector('.whatsapp-input');
+  const whatsappMessages = document.querySelector('.whatsapp-messages');
+  
+  // WhatsApp widget'ı aç/kapa
+  whatsappToggle.addEventListener('click', function() {
+    whatsappWidget.classList.toggle('active');
+  });
+  
+  whatsappClose.addEventListener('click', function() {
+    whatsappWidget.classList.remove('active');
+  });
+  
+  // Mesaj gönderme fonksiyonu
+  function sendMessage() {
+    const message = whatsappInput.value.trim();
+    if (message) {
+      // Widget'a mesajı ekle
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'whatsapp-send';
+      messageDiv.innerHTML = `
+        <p>${message}</p>
+        <span class="whatsapp-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+      `;
+      whatsappMessages.appendChild(messageDiv);
+      
+      // WhatsApp'a yönlendir
+      const phoneNumber = '905543626540'; // Kendi numaranızı girin
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+      
+      // Input'u temizle
+      whatsappInput.value = '';
+      
+      // Mesaj alanını en alta kaydır
+      whatsappMessages.scrollTop = whatsappMessages.scrollHeight;
+    }
+  }
+  
+  // Enter tuşu ile gönder
+  whatsappInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  });
+  
+  // Gönder butonu
+  whatsappSend.addEventListener('click', sendMessage);
+  
+  // Dil değişikliğinde input placeholder'ını güncelle
+  function updateWhatsappPlaceholder(lang) {
+    document.querySelectorAll('.whatsapp-input').forEach(input => {
+      input.classList.add('hidden');
+    });
+    document.querySelector(`.whatsapp-input.${lang}`).classList.remove('hidden');
+  }
+  
+  // Dil değiştirme fonksiyonunu güncelle
+  const originalChangeLanguage = window.changeLanguage;
+  window.changeLanguage = function(lang) {
+    originalChangeLanguage(lang);
+    updateWhatsappPlaceholder(lang);
+  };
 });
 
     </script>
